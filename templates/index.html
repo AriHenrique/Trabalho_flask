@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<head>
+    <title>Contatos 📝 - ARISTIDES</title>
+    <style>
+        body {
+            background-image:url({{url_for('static', filename='img/ceu.gif') }});
+            background-color: black;
+            color: aliceblue;
+            text-align: center;
+            align-items: center;
+        }
+
+        .card {
+            padding: 10px;
+        }
+
+        .card li:hover{
+            border-radius: 10%;
+
+            color: white;
+        }
+
+        .card li, a {
+            text-decoration-line: none;
+            font-size: 30px;
+            margin-bottom: 15px;
+            list-style-type: none;
+        }
+
+        #sobre{
+            margin-top: 80px;
+
+        }
+        #sobre a{
+            color: white;
+        }
+
+        #sobre a:hover{
+            border-radius: 10%;
+            padding: 10px;
+            color: black;
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+<main>
+
+    <article>
+
+        <div id="title">
+
+            <h1>Bem vindo</h1>
+            <h2>API destinado a gerenciamento de contatos</h2>
+        </div>
+        
+        <section class="card">
+             <h1>Funções</h1><br>
+             <a href="{{url_for ('static', filename='consulta.html')}}"><li>Consulta 🔎</li></a>
+             <a href="{{url_for ('static', filename='criar.html')}}"><li>Cadastro 💾</li></a>
+             <a href="{{url_for ('static', filename='atualizar.html')}}"><li>Atualização 🔄</li></a>
+             <a href="{{url_for ('static', filename='remover.html')}}"><li>Remoção ❌</li></a>
+        </section>
+
+    </article>
+
+</main>
+
+<footer>
+
+    <nav id="sobre">
+        <a href="http://localhost:5000/sobre">Sobre</a>
+    </nav>
+
+</footer>
+
+</body>
+
+</html>
