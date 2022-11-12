@@ -3,8 +3,41 @@
     <title>{{ CADASTRO }}</title>
 </head>
 <body>
+<footer>
+
+    <nav id="sobre">
+        <a href="http://localhost:5000/">HOME</a>
+    </nav>
+    <style>
+        body {
+        text-align: center;
+        align-items: center;
+        background-color: black;
+        color: aliceblue;
+    }
+        div{
+            border: solid red;
+            margin-right: 250px;
+            margin-left: 250px;
+            margin-top: 30px;
+        }
+        #sobre{
+            margin-top: 80px;
+            margin-bottom: 50px;
+        }
+        #sobre a{
+            color: white;
+        }
+
+        #sobre a:hover{
+            border-radius: 10%;
+            padding: 10px;
+            color: black;
+            background-color: aliceblue;
+        }
+</style>
 <div>
-<p>Contato cadastrad o com sucesso</p>
+<p>Contato cadastrado com sucesso</p>
 <p>Nome: {{name}}</p>
 <p>Empresa: {{empresa}}</p>
 <p>Telefone: {{telefone}}</p>

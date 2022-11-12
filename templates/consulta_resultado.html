@@ -21,6 +21,7 @@
         #sobre{
             margin-top: 80px;
             margin-bottom: 50px;
+
         }
         #sobre a{
             color: white;
@@ -33,26 +34,18 @@
             background-color: aliceblue;
         }
 </style>
-<form action = "http://localhost:5000/create" method = "post">
-    <p>CADASTRO:</p>
+</footer>
+    {% for i in lista: %}
+    <div>
+        <p>Id: {{i[0]}}</p><br>
+        <p>Nome: {{i[1]}}</p><br>
+        <p>Empresa: {{i[2]}}</p><br>
+        <p>Telefone: {{i[3]}}</p><br>
+        <p>Email: {{i[4]}}</p><br>
+    </div><br>
+    {% endfor %}
 
-    <p>NOME: <input type="text"  name = "nome" required></p>
-    <p>EMPRESA: <input type="text" name = "empresa" value="Sem empresa" required></p>
-    <p>TELEFONE: <input type="text"  name = "telefone" required></p>
-    <p>EMAIL: <input type="email" name = "email" required></p>
-    <p><input type = "submit" value = "CRIAR"></p>
 
-
-</form>
 </body>
 </html>
 
-<style>
-        body {
-        text-align: center;
-        align-items: center;
-        background-color: black;
-        color: aliceblue;
-    }
-    </style>
-</html>
