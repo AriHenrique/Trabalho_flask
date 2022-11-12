@@ -43,6 +43,7 @@ def sucess(name, empresa, telefone, email):
 
 @app.route('/delete', methods=["POST", "DELETE"])
 def delete():
+    mydb = sqlite3.connect('agenda.db', check_same_thread=False)
     id = request.form['id']
     try:
         cursor = mydb.cursor()
@@ -56,6 +57,7 @@ def delete():
 
 @app.route("/update", methods=["POST", "PUT"])
 def update():
+    mydb = sqlite3.connect('agenda.db', check_same_thread=False)
     id = request.form['id']
     nome = request.form['nome']
     empresa = request.form['empresa']
@@ -70,6 +72,7 @@ def update():
 
 @app.route('/check_remove', methods=['POST'])
 def check_remove():
+    mydb = sqlite3.connect('agenda.db', check_same_thread=False)
     id = request.form['id']
     my_cursor = mydb.cursor()
     my_cursor.execute(f"SELECT * FROM tb_contatos where id like {id}")
@@ -87,6 +90,7 @@ def check_remove():
 
 @app.route('/check_update', methods=['POST'])
 def check_update():
+    mydb = sqlite3.connect('agenda.db', check_same_thread=False)
     id = request.form['id']
     my_cursor = mydb.cursor()
     my_cursor.execute(f"SELECT * FROM tb_contatos where id like {id}")
@@ -104,42 +108,45 @@ def check_update():
 
 @app.route('/consulta', methods=['POST', 'GET'])
 def consulta():
-    if request.method == 'POST':
-        id = request.form['id']
-        nome = request.form['nome']
-        empresa = request.form['empresa']
-        telefone = request.form['telefone']
-        email = request.form['email']
-        my_cursor = mydb.cursor()
-        if request.form['nome-r'] == '1':
-            my_cursor.execute(f"SELECT * FROM tb_contatos where id = {id}")
-        elif request.form['nome-r'] == '2':
-            my_cursor.execute(f"SELECT * FROM tb_contatos where nome like '%{nome}%'")
-        elif request.form['nome-r'] == '3':
-            my_cursor.execute(f"SELECT * FROM tb_contatos where empresa like '%{empresa}%'")
-        elif request.form['nome-r'] == '4':
-            my_cursor.execute(f"SELECT * FROM tb_contatos where telefone like '%{telefone}%'")
-        elif request.form['nome-r'] == '5':
-            my_cursor.execute(f"SELECT * FROM tb_contatos where email like '%{email}%'")
+    mydb = sqlite3.connect('agenda.db', check_same_thread=False)
+    id = request.form['id']
+    nome = request.form['nome']
+    empresa = request.form['empresa']
+    telefone = request.form['telefone']
+    email = request.form['email']
+    my_cursor = mydb.cursor()
+    if request.form['nome-r'] == '1':
+        my_cursor.execute(f"SELECT * FROM tb_contatos where id = {id}")
+    elif request.form['nome-r'] == '2':
+        my_cursor.execute(f"SELECT * FROM tb_contatos where nome like '%{nome}%'")
+    elif request.form['nome-r'] == '3':
+        my_cursor.execute(f"SELECT * FROM tb_contatos where empresa like '%{empresa}%'")
+    elif request.form['nome-r'] == '4':
+        my_cursor.execute(f"SELECT * FROM tb_contatos where telefone like '%{telefone}%'")
+    elif request.form['nome-r'] == '5':
+        my_cursor.execute(f"SELECT * FROM tb_contatos where email like '%{email}%'")
+    elif request.form['nome-r'] == '6':
+        my_cursor.execute('SELECT * FROM tb_contatos')
 
-        agenda = my_cursor.fetchall()
-        if not agenda:
-            return render_template('error404_sucess.html'), 400
-        else:
-            lista = []
-            for i in agenda:
-                id = i[0]
-                name = i[1]
-                empresa = i[2]
-                telefone = i[3]
-                email = i[4]
-                lista.append([id, name, empresa, telefone, email])
+    agenda = my_cursor.fetchall()
+    if not agenda:
+        return render_template('error404_sucess.html'), 400
+    else:
+        lista = []
+        for i in agenda:
+            id = i[0]
+            name = i[1]
+            empresa = i[2]
+            telefone = i[3]
+            email = i[4]
+            lista.append([id, name, empresa, telefone, email])
 
-            return render_template('consulta_resultado.html', lista=lista)
+        return render_template('consulta_resultado.html', lista=lista)
 
 
 @app.route('/create', methods=['POST', 'GET'])
 def create():
+    mydb = sqlite3.connect('agenda.db', check_same_thread=False)
     if request.method == 'POST':
         nome = request.form['nome']
         empresa = request.form['empresa']
