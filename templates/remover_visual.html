@@ -5,6 +5,7 @@
     <nav id="sobre">
         <a href="http://localhost:5000/">HOME</a>
     </nav>
+</footer>
     <style>
         body {
         text-align: center;
@@ -32,21 +33,21 @@
             color: black;
             background-color: aliceblue;
         }
-</style>
+    </style>
 
-<form action = "http://localhost:5000/delete" method="post">
-    <div>
-        <p>Deseja remover o contato?</p><br>
-        <p>Id: {{id}}</p><br>
-        <p>Nome: {{nome}}</p><br>
-        <p>Empresa: {{empresa}}</p><br>
-        <p>Telefone: {{telefone}}</p><br>
-        <p>Email: {{email}}</p><br>
-        <p><input hidden type = "number" name="id" value="{{id}}" required></p>
-        <p><input type = "submit" value ="DELETAR"></p>
-    </div>
+    <form action = "http://localhost:5000/delete" method="post">
+        <div>
+            <p>Deseja remover o contato?</p><br>
+            <p>Id: {{id}}</p><br>
+            <p>Nome: {{nome}}</p><br>
+            <p>Empresa: {{empresa}}</p><br>
+            <p>Telefone: {{telefone}}</p><br>
+            <p>Email: {{email}}</p><br>
+            <p><input hidden type = "number" name="id" value="{{id}}" required></p>
+            <p><input type = "submit" value ="DELETAR"></p>
+        </div>
 
-</form>
+    </form>
 </body>
 </html>
 
