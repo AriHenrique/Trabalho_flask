@@ -70,7 +70,6 @@ def update():
 
 @app.route('/check_remove', methods=['POST'])
 def check_remove():
-    mydb = sqlite3.connect('agenda.db', check_same_thread=False)
     id = request.form['id']
     my_cursor = mydb.cursor()
     my_cursor.execute(f"SELECT * FROM tb_contatos where id like {id}")
@@ -88,7 +87,6 @@ def check_remove():
 
 @app.route('/check_update', methods=['POST'])
 def check_update():
-    mydb = sqlite3.connect('agenda.db', check_same_thread=False)
     id = request.form['id']
     my_cursor = mydb.cursor()
     my_cursor.execute(f"SELECT * FROM tb_contatos where id like {id}")
@@ -106,7 +104,6 @@ def check_update():
 
 @app.route('/consulta', methods=['POST', 'GET'])
 def consulta():
-    contatos = []
     if request.method == 'POST':
         id = request.form['id']
         nome = request.form['nome']
@@ -144,7 +141,6 @@ def consulta():
 @app.route('/create', methods=['POST', 'GET'])
 def create():
     if request.method == 'POST':
-        mydb = sqlite3.connect('agenda.db', check_same_thread=False)
         nome = request.form['nome']
         empresa = request.form['empresa']
         telefone = request.form['telefone']
