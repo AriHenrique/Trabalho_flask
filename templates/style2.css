@@ -64,11 +64,11 @@ section{
     margin-top: 10px;
 }
 
-#github{
+#github2{
     margin-top: -5px;
 }
 
-#github:hover{
+#github2:hover{
     transform: scale(1.5);    
 }
 footer{
